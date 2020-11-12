@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>JS Drum Kit</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <div class="keys">
+        <!-- Add the div elements from the `divs` array -->
+
+    </div>
+
+    <script>
+        /**
+         * JS Drum Kit Exercise
+         *
+         * In this exercise you will learn to create a drum kit using JavaScript.
+         *
+         * Each time you press a key on the keyboard a sound will play.
+         *
+         * They keys you will be listening for with keyboard event listeners are:
+         *
+         * `a`, `s`, `d`, `f`, `g`, `h`, `j`, `k`, and `l`
+         */
+
+        /**
+         * Step 1:
+         *
+         * Create an `audio element` for each item in the `audioElements` array
+         * with a `data-key` attribute with the value from the `dataKey` property
+         * and a `src` attribute with the value from the `src` property.
+         *
+         * Then append the audio elements as children of the document body.
+         *
+         * @example
+         *
+         * [{ dataKey: "l", src: "sounds/tink.wav" }]
+         *
+         * creates an audio element:
+         * <audio data-key="l" src="sounds/tink.wav"></audio>
+         */
+        let audioElements = [
+            { dataKey: "a", src: "sounds/clap.wav" },
+            { dataKey: "s", src: "sounds/hihat.wav" },
+            { dataKey: "d", src: "sounds/kick.wav" },
+            { dataKey: "f", src: "sounds/openhat.wav" },
+            { dataKey: "g", src: "sounds/boom.wav" },
+            { dataKey: "h", src: "sounds/ride.wav" },
+            { dataKey: "j", src: "sounds/snare.wav" },
+            { dataKey: "k", src: "sounds/tom.wav" },
+            { dataKey: "l", src: "sounds/tink.wav" },
+        ];
+
+        for (let i = 0; i < audioElements.length; i++) {
+            let audioTag = document.createElement("audio");
+            audioTag.setAttribute("data-key", audioElements[i].dataKey);
+            audioTag.src = audioElements[i].src;
+
+            document.body.appendChild(audioTag);
+        }
+
+        // Step 1: Create the audio elements with a loop
+
+
+        /**
+         * Step 2:
+         *
+         * Create a `div element` for each item in the `divs` array
+         * with the structure from the example bellow.
+         *
+         * Step 2:
+         *
+         * Create a `div element` for each item in the `divs` array
+         * with the structure from the example bellow.
+         *
+         * Each div element should have a `data-key` attribute with
+         * the value from the `divDataKey` property and a class with
+         * the value from the `divClass` property.
+         *
+         * The first child element of the div should be a `kbd` html5 element
+         * that has a text content with the value from the `kbdElementText` property.
+         *
+         * The second child element of the div should be a `span` element
+         * that has a `class` with the value from the `spanClass` property
+         * and a text content with the value from the `spanText` property.
+         *
+         * Then append all the div elements created from the array
+         * as children of the div parent element with a class of `.keys`.
+         *
+         * @example
+         * creates a div element for each entry in the `divs` array and
+         * adds all of them as child elements of the `.keys` parent div:
+         *
+         * [
+         *  {
+         *     divDataKey: "k",
+         *     divClass: "key",
+         *     kbdElementText: "K",
+         *     spanClass: "sound",
+         *     spanText: "tom",
+         *  },
+         *  {
+         *     divDataKey: "l",
+         *     divClass: "key",
+         *     kbdElementText: "L",
+         *     spanClass: "sound",
+         *     spanText: "tink",
+         *   },
+         * ]
+         *
+         * <div class="keys">
+         *   <div data-key="k" class="key">
+         *     <kbd>K</kbd>
+         *     <span class="sound">tom</span>
+         *   </div>
+         *   <div data-key="l" class="key">
+         *     <kbd>L</kbd>
+         *     <span class="sound">tink</span>
+         *   </div>
+         * </div>
+         */
+        let divs = [
+            {
+                divDataKey: "a",
+                divClass: "key",
+                kbdElementText: "A",
+                spanClass: "sound",
+                spanText: "clap",
+            },
+            {
+                divDataKey: "s",
+                divClass: "key",
+                kbdElementText: "S",
+                spanClass: "sound",
+                spanText: "hihat",
+            },
+            {
+                divDataKey: "d",
+                divClass: "key",
+                kbdElementText: "D",
+                spanClass: "sound",
+                spanText: "kick",
+            },
+            {
+                divDataKey: "f",
+                divClass: "key",
+                kbdElementText: "F",
+                spanClass: "sound",
+                spanText: "openhat",
+            },
+            {
+                divDataKey: "g",
+                divClass: "key",
+                kbdElementText: "G",
+                spanClass: "sound",
+                spanText: "boom",
+            },
+            {
+                divDataKey: "h",
+                divClass: "key",
+                kbdElementText: "H",
+                spanClass: "sound",
+                spanText: "ride",
+            },
+            {
+                divDataKey: "j",
+                divClass: "key",
+                kbdElementText: "J",
+                spanClass: "sound",
+                spanText: "snare",
+            },
+            {
+                divDataKey: "k",
+                divClass: "key",
+                kbdElementText: "K",
+                spanClass: "sound",
+                spanText: "tom",
+            },
+            {
+                divDataKey: "l",
+                divClass: "key",
+                kbdElementText: "L",
+                spanClass: "sound",
+                spanText: "think",
+            },
+        ];
+
+        for (let i = 0; i < divs.length; i++) {
+            let divEl = document.createElement('div');
+            divEl.setAttribute("data-key", divs[i].divDataKey);
+            divEl.classList.add(divs[i].divClass);
+
+            let kbdEl = document.createElement("kbd");
+            kbdEl.innerHTML = divs[i].kbdElementText;
+
+            let spanEl = document.createElement("span");
+            spanEl.classList.add(divs[i].spanClass);
+            spanEl.innerHTML = divs[i].spanText;
+
+            divEl.appendChild(kbdEl);
+            divEl.appendChild(spanEl);
+
+            document.getElementsByClassName("keys")[0].appendChild(divEl);
+        }
+
+        // Step 2: Create the div elements using a loop
+
+        /**
+         * Step 3:
+         *
+         * Add a `keydown` event listener on the `document`
+         * that executes the `playSound` function.
+         *
+         * The `playSound` function should:
+         *
+         * 1. get the `audio` element that has a `data-key` attribute
+         *    with the value of the `event.key`.
+         *
+         * 2. get the `div` element that has a `data-key` attribute
+         *    with the value of the `event.key`.
+         *
+         * The function should check if the `audio` element was not found
+         * and the result is not null to avoid executing the rest of the function.
+         *
+         * You can see which key was pressed by accessing the event.key property of
+         * the JavaScript events. Pressing the key `a` on the keyboard
+         * will have a `event.key` of `a`.
+         *
+         * Pressing the `a` key will have an `event.key` of `a` which should get the
+         * `audio` and `div` element with the attribute `data-key='a'`.
+         *
+         * 3. Add a class of `playing` to the div element that has a `data-key`
+         *   from the previous step 2.
+         *
+         * 4. Set the `currentTime` property of the `audio` element to 0 to
+         *    reset the playing time to 0 each time you press the key.
+         *
+         * 5. execute the `audio.play()` method of the audio element to play the sound.
+         *
+         * You can use this link to see the event values for
+         * each key that you can press on the keyboard:
+         * https://keycode.info/
+         */
+
+        document.addEventListener("keydown", playSound);
+
+        // Step 3: Add the event listener and complete the `playSound` function
+
+        function playSound(event) {
+            let listOfDivTags = document.getElementsByClassName("key");
+            let listOfAudioTags = document.getElementsByTagName("audio");
+
+            let pressedDiv = 0;
+            let pressedAudio = 0;
+
+            for (let i = 0; i < listOfDivTags.length; i++) {
+                if (listOfDivTags[i].getAttribute("data-key") == event.key) pressedDiv = listOfDivTags[i];
+                if (listOfAudioTags[i].getAttribute("data-key") == event.key) pressedAudio = listOfAudioTags[i];
+            }
+
+            if (pressedDiv == 0) return;
+
+            pressedDiv.classList.add("playing");
+            pressedAudio.currentTime = 0;
+
+            pressedAudio.play();
+        }
+
+        /**
+         * Step 4:
+         *
+         * Get all the elements with a class of `.key` and add a
+         * `transitionend` event listener for each element to
+         * execute the `removeTransition` function.
+         */
+
+        // Step 4: Add the `transitionend` event listeners
+        var divTags = document.getElementsByClassName("key");
+        for (let i = 0; i < divTags.length; i++) {
+            divTags[i].addEventListener("transitionend", removeTransition);
+        }
+        /**
+         * Step 5:
+         *
+         * The `removeTransition` function should remove the class of `playing`
+         * from the `.key` element that has a class of `playing` set in the step 3.
+         *
+         * The function should check if the `event.propertyName` is equal to `transform`
+         * to only remove the class when the `transitionend` event has a value of
+         * `transform` which is triggered when the css animation is finished.
+         */
+
+        // Step 5: Finish the code of the `removeTransition` function
+        function removeTransition(event) {
+            if (event.propertyName == "transform") event.target.classList.remove("playing");
+        }
+    </script>
+</body>
+
+</html>
